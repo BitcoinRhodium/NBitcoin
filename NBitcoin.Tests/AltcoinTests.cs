@@ -365,9 +365,10 @@ namespace NBitcoin.Tests
 				}
 				else
 				{
-					Assert.Equal(Money.Zero, await rpc.GetBalanceAsync());
+					var amount = IsBRhodium(node.Network) ? new Money(1050000 * Money.COIN) : Money.Zero;
+					Assert.Equal(amount, await rpc.GetBalanceAsync());
 					node.Generate(1);
-					Assert.NotEqual(Money.Zero,await rpc.GetBalanceAsync());
+					Assert.NotEqual(Money.Zero, await rpc.GetBalanceAsync());
 				}
 			}
 		}
@@ -399,6 +400,11 @@ namespace NBitcoin.Tests
 		private bool IsElements(Network nodeNetwork)
 		{
 			return nodeNetwork.NetworkSet == Altcoins.Liquid.Instance;
+		}
+
+		private bool IsBRhodium(Network nodeNetwork)
+		{
+			return nodeNetwork.NetworkSet == Altcoins.BRhodium.Instance;
 		}
 	}
 }

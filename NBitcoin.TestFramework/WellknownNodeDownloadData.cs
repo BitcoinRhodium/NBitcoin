@@ -1092,6 +1092,37 @@ namespace NBitcoin.Tests
 			};
 		}
 
+		public class BRhodiumDownloadData
+		{
+			public NodeDownloadData v1_1_13 = new NodeDownloadData()
+			{
+				Version = "1.1.13",
+				Windows = new NodeOSDownloadData()
+				{
+					DownloadLink = "http://195.201.99.213/brhodium-{0}-win64.tgz",
+					Archive = "brhodium-{0}-win64.zip",
+					Executable = "brhodium-{0}-win64/BRhodium.exe",
+					Hash = "7B0ABEA75B032D8FAF3BEE071A892E2864A31A8ECC42F7AA4300CC51B1CA1D5A"
+				},
+				Linux = new NodeOSDownloadData()
+				{
+					DownloadLink = "http://195.201.99.213/brhodium-{0}-linux64.tgz",
+					Archive = "brhodium-{0}-linux64.tgz",
+					Executable = "brhodium-{0}-linux64/brhodium-exec",
+					Hash = "07D4FB1639D36A7FAA19CAEE2982C9270C17C784743A329CE8C9C223F353DFB0"
+				},
+				Mac = new NodeOSDownloadData()
+				{
+					DownloadLink = "http://195.201.99.213/brhodium-{0}-osx64.tgz",
+					Archive = "brhodium-{0}-osx64.tgz",
+					Executable = "brhodium-{0}-osx64/BRhodium",
+					Hash = "04C4F4EBCA494ABD6C29D834D86AFEA559BB8893A1E74BE849D050FEFC164C72"
+				},
+				SupportCookieFile = false,
+				AdditionalRegtestConfig = "defaultwalletname=default.wallet" + Environment.NewLine + "maxtipage=2147483647" + Environment.NewLine + "unlockdefaultwallet=0" + Environment.NewLine + "usedeprecatedwalletrpc=1"
+			};
+		}
+
 		public static GoByteNodeDownloadData GoByte
 		{
 			get; set;
@@ -1220,6 +1251,11 @@ namespace NBitcoin.Tests
 		{
 			get; set;
 		} = new ZCoinNodeDownloadData();
+
+		public static BRhodiumDownloadData BRhodium
+		{
+			get; set;
+		} = new BRhodiumDownloadData();
 
 		public bool UseSectionInConfigFile { get; private set; }
 		public string AdditionalRegtestConfig { get; private set; }
